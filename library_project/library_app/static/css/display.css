@@ -1,0 +1,28 @@
+#jbt{
+    text-align: center;
+    /* background-color: rgb(255, 247, 247); */
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    
+}
+div.jbt1{
+    padding: 20px 100px 20px 100px;
+    }
+#lib{
+        color: black;
+    }
+.form-label{
+    color: aliceblue;
+}
+#a{
+    color: rgb(230, 230, 230);
+}
+#t{
+    color: rgb(251, 251, 251);
+    background-color: rgba(0, 0, 0, 0.664);
+}
+.tr{
+    border-color: rgb(0, 0, 0),red,black;
+      border-style: groove;}
+

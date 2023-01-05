@@ -1,0 +1,20 @@
+#jbt{
+    text-align: center;
+    /* background-color: rgb(255, 247, 247); */
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    
+}
+div.jbt1{
+    padding: 20px 100px 20px 100px;
+    }
+#lib{
+        color: black;
+    }
+.form-label{
+    color: aliceblue;
+}
+#a{
+    color: aliceblue;
+}
