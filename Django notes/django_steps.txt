@@ -1,0 +1,77 @@
+1...   creating virtual environment for Django
+
+------> pip install venv
+------> open cmd
+------> py -m venv myworld
+------> myworld\Scripts\activate.bat
+------> pip install Django
+------> django-admin startproject project_name
+------> cd project_name
+------> py manage.py startapp app_name
+------> py manage.py runserver
+
+2...  creating super-user
+
+------> py manage.py createsuperuser
+      ------> username :
+      ------> email add : 
+      ------> password :
+      ------> password(again) :
+
+_____________________________________________________________________________________________________
+
+3.... creating signup,signin,logout for user custom
+
+by using simple method ---
+
+------> create signup html page and give name tags 
+------> from django.contrib import messages
+------> from django.contrib.auth import authenticate,login,logout
+------> from django.contrib.auth.decorators import login_required
+------> from django.contrib.auth.models import User,auth
+
+after importing user table insert the data--
+------>  user=User.objects.create_user(username=n,email=e,password=p)
+------>  user.save()
+
+with some validations----
+------>  if request.method == 'POST':
+            n=request.POST.get('username')
+            e=request.POST.get('email')
+            p=request.POST.get('password')
+            p1=request.POST.get('password1')
+            if p==p1:
+                  if User.objects.filter(username=n).exists():
+                      messages.error(request,'username taken')
+                      return redirect ('/signup/')
+                  elif User.objects.filter(email=e).exists():
+                       messages.error(request,'email taken')
+                       return redirect ('/signup/')
+                  else:
+                        user=User.objects.create_user(username=n,email=e,password=p)
+                        user.save()
+                        return redirect ('/signin/')
+            else:
+                  messages.error(request,'password not matched')
+
+------> create signin html page and give name tags
+with some validations----
+------> if request.method == 'POST':
+              n=request.POST.get('username')
+              p=request.POST.get('password')
+              user=authenticate(request,username=n,password=p)
+              if user is not none:
+                  login(request,user)
+                  return redirect('/home/')
+              else:
+                messages.error(request,'invalid credintials')
+                return redirect('/signin/')
+
+for logout ----
+------> create view named logout 
+------> also give anchor tag in html with href='/logout/'
+------> def logout(request):
+            auth.logout(request)
+            return redirect('/login/')
+_____________________________________________________________________________________________________
+

@@ -1,0 +1,42 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>u r</title>
+</head>
+<body>
+    <form action="" method="post" novalidate>{%csrf_token%}
+        {% for fm in form %}
+        {{fm}}{{ fm.label_tag}}  <br><br> 
+        {% endfor %}
+ 
+    <input type="submit" value="submit">
+    </form>
+</body>
+</html> --> -
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" method="post"> 
+        {% csrf_token %}
+       username: <input type="text" name="username" id="" placeholder="username" required ><br>
+       email: <input type="email" name="email" id="" placeholder="username" required ><br>
+       password: <input type="password" name="password" id="" placeholder="username" required><br>
+       confirm password: <input type="password" name="password1" id="" placeholder="username" required><br>
+       <!-- username: <input type="text" name="username" id="" placeholder="username" > -->
+       <input type="submit" value="submit">
+    </form>
+    {% for m in messages %}
+    <h3>{{m}} </h3>
+    {% endfor %}
+</body>
+</html> 

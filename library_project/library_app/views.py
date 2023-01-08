@@ -109,17 +109,26 @@ def signup(request):
     if request.user.is_authenticated:
         return redirect('/index/')
     else:
-        form=createuserform()
-        if request.method =='POST':
-            form=createuserform(request.POST)
-            if form.is_valid():
-                form.save()
-                user=form.cleaned_data.get('username')
-                messages.success(request,'account was created for '+ user)
-                return redirect ('/signin/')
+        # form=createuserform()
+        # if request.method =='POST':
+        #     form=createuserform(request.POST)
+        #     if form.is_valid():
+        #         form.save()
+        #         user=form.cleaned_data.get('username')
+        #         messages.success(request,'account was created for '+ user)
+        #         return redirect ('/signin/')
+          
+          if request.method =='POST':
+            username=request.POST.get('username')
+            email=request.POST.get('password')
+            password=request.POST.get('username')
+            password1=request.POST.get('password')
+            user=User.objects.create_user(username=username,email=email,password=password)
+            user.save()
+            return redirect ('/signin/')
 
 
-        return render(request,'library_app/signup.html',{'form':form})
+    return render(request,'library_app/signup.html',{'form':form})
 
 def signin(request):
     if request.user.is_authenticated:
@@ -132,11 +141,9 @@ def signin(request):
             if user is not None:
                 login(request,user)
                 return redirect('/index/')
-       
-
-            
-
-    return render(request,'library_app/login.html')
+            else:
+                messages.info(request,'invalid credentials')
+    return render(request,'library_app/a_login.html')
 
 def logout(request):
     auth.logout(request)
